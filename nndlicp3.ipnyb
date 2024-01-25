@@ -1,0 +1,126 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Y9H6_cMoaFF2",
+        "outputId": "7acc7247-460f-4e29-cbfd-570ef08604c0"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total number of employees: 4\n",
+            "Average salary: 76250.0\n"
+          ]
+        }
+      ],
+      "source": [
+        "class Employee:\n",
+        "    num_employees = 0\n",
+        "\n",
+        "    def __init__(self, name, family, salary, department):\n",
+        "        self.name = name\n",
+        "        self.family = family\n",
+        "        self.salary = salary\n",
+        "        self.department = department\n",
+        "        Employee.num_employees += 1\n",
+        "\n",
+        "    @staticmethod\n",
+        "    def average_salary(employees):\n",
+        "        total_salary = sum(emp.salary for emp in employees)\n",
+        "        return total_salary / len(employees)\n",
+        "\n",
+        "class FulltimeEmployee(Employee):\n",
+        "    def __init__(self, name, family, salary, department, experience):\n",
+        "        super().__init__(name, family, salary, department)\n",
+        "        self.experience = experience\n",
+        "\n",
+        "employee1 = Employee(\"John Doe\", \"Family A\", 60000, \"HR\")\n",
+        "employee2 = Employee(\"Jane Smith\", \"Family B\", 75000, \"Finance\")\n",
+        "\n",
+        "fulltime_employee1 = FulltimeEmployee(\"Alice Johnson\", \"Family C\", 80000, \"IT\", 3)\n",
+        "fulltime_employee2 = FulltimeEmployee(\"Bob Williams\", \"Family D\", 90000, \"Engineering\", 5)\n",
+        "\n",
+        "employees = [employee1, employee2, fulltime_employee1, fulltime_employee2]\n",
+        "avg_salary = Employee.average_salary(employees)\n",
+        "\n",
+        "print(\"Total number of employees:\", Employee.num_employees)\n",
+        "print(\"Average salary:\", avg_salary)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "random_vector = np.random.uniform(1, 20, size=20)\n",
+        "print(\"Original array:\")\n",
+        "print(random_vector)\n",
+        "\n",
+        "reshaped_array = random_vector.reshape(4, 5)\n",
+        "\n",
+        "max_indices = np.argmax(reshaped_array, axis=1)\n",
+        "\n",
+        "reshaped_array[np.arange(4), max_indices] = 0\n",
+        "\n",
+        "print(\"\\nReshaped array:\")\n",
+        "print(reshaped_array)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2J8ySKdhaGeT",
+        "outputId": "8792c3fa-67d8-4ecf-976e-d5b53dbdd4a6"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Original array:\n",
+            "[ 2.35104668 13.2579605  18.30664635  1.19127204  2.41996359 13.59967525\n",
+            " 15.27520732 12.29234851  2.14092215  7.62587702 11.64479036 14.07696663\n",
+            " 17.36751437  5.74298434 16.68339783  9.30785615 10.90069013 15.37107566\n",
+            "  4.75717622 19.23561929]\n",
+            "\n",
+            "Reshaped array:\n",
+            "[[ 2.35104668 13.2579605   0.          1.19127204  2.41996359]\n",
+            " [13.59967525  0.         12.29234851  2.14092215  7.62587702]\n",
+            " [11.64479036 14.07696663  0.          5.74298434 16.68339783]\n",
+            " [ 9.30785615 10.90069013 15.37107566  4.75717622  0.        ]]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "G4FdgJckaWmB"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
